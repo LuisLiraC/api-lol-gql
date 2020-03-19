@@ -1,0 +1,69 @@
+extend type Query {
+  "List of champions"
+  championsList(role: String, region: String, limit: Int): [Champion!]!
+  "Get one champion by name"
+  championByName(name: String!): Champion
+}
+
+extend type Mutation {
+  "Add champion (simulation)"
+  addChampion(champion: NewChampionInput!): Champion!
+  "Edit champion (simulation)"
+  editChampion(champion: EditChampionInput!): Champion!
+  "Delete champion (simulation)"
+  deleteChampion(name: String!): Champion!
+}
+
+type Champion {
+  _id: ID
+  name: String!
+  alias: String
+  role: String
+  abilities: [Abilitie!]
+  skins: [String!]
+  region: String
+  champion_image: String
+}
+
+type Abilitie {
+  type: String!
+  name: String!
+  description: String!
+  image: String!
+}
+
+input NewChampionInput {
+  _id: ID
+  name: String!
+  alias: String!
+  role: String!
+  abilities: [AbilitieInput!]!
+  skins: [String!]!
+  region: String!
+  champion_image: String!
+}
+
+input EditChampionInput {
+  _id: ID
+  name: String!
+  alias: String
+  role: String
+  abilities: [EditAbilitieInput!]
+  skins: [String!]
+  region: String
+  champion_image: String
+}
+
+input EditAbilitieInput {
+  type: String
+  name: String
+  description: String
+  image: String
+}
+
+input AbilitieInput {
+  type: String!
+  name: String!
+  description: String!
+  image: String!
+}
