@@ -13,6 +13,7 @@ app.use(express.json())
 
 const server = new ApolloServer({
   schema,
+  playground: true,
   introspection: true,
   dataSources: () => ({
     champions: new ChampionsAPI()
@@ -22,5 +23,5 @@ const server = new ApolloServer({
 server.applyMiddleware({ app })
 
 app.listen(PORT, () => {
-  console.log(`Server lister on http://localhost:${PORT}/graphql`)
+  console.log(`Server listen on http://localhost:${PORT}/graphql`)
 })
