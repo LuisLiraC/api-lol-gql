@@ -5,12 +5,13 @@ export class ChampionsAPI extends LOL {
     super()
   }
 
-  async getChampions(role: String, region: String, limit: Number) {
+  async getChampions(role: String, region: String, limit: Number, offset: 5) {
     try {
       let endpoint = 'champions?'
       if (role) endpoint += `role=${role}&`
       if (region) endpoint += `region=${region}&`
-      if (limit) endpoint += `limit=${limit}`
+      if (limit) endpoint += `limit=${limit}&`
+      if (offset) endpoint += `offset=${offset}`
   
       return await this.get(endpoint)
     } catch (error) {

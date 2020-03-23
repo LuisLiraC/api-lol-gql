@@ -1,7 +1,7 @@
 export const championsQueries = {
-  async championsList(_: void, { role, region , limit}: any, { dataSources }: { dataSources: any }) {
+  async championsList(_: void, { role, region, limit, offset}: any, { dataSources }: { dataSources: any }) {
     try {      
-      return await dataSources.champions.getChampions(role, region, limit)
+      return await dataSources.champions.getChampions(role, region, limit, offset)
         .then((data: any) => data)
     } catch (error) {
       console.log(error)

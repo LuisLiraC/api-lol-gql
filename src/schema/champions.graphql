@@ -1,6 +1,6 @@
 extend type Query {
   "List of champions"
-  championsList(role: String, region: String, limit: Int): [Champion!]!
+  championsList(role: String, region: String, limit: Int, offset: Int): [Champion!]!
   "Get one champion by name"
   championByName(name: String!): Champion
 }
